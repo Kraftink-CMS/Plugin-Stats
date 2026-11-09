@@ -5,9 +5,14 @@
     "license": "MIT",
     "description": "stats::messages.description",
     "market": {
+        "readme": {
+            "en": "lang/en/market.md",
+            "fr": "lang/fr/market.md"
+        },
+        "icon": "bar-chart-line",
         "name": "stats::messages.title",
         "author": {"name": "nivcoo, KraftInk", "url": "https://github.com/kraftink-cms"},
-        "description": "stats::messages.description"
+        "description": "stats::market.description"
     },
     "type": "plugin",
     "games": {
