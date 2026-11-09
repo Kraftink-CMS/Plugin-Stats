@@ -1,0 +1,40 @@
+{
+    "id": "stats",
+    "name": "Statistics",
+    "authors": ["nivcoo", "KraftInk"],
+    "license": "MIT",
+    "description": "stats::messages.description",
+    "market": {
+        "name": "stats::messages.title",
+        "author": {"name": "nivcoo, KraftInk", "url": "https://github.com/kraftink-cms"},
+        "description": "stats::messages.description"
+    },
+    "type": "plugin",
+    "games": {
+        "supported": ["*"]
+    },
+    "version": "1.0.0",
+    "namespace": "KraftInk\\Plugins\\Stats\\",
+    "provider": "KraftInk\\Plugins\\Stats\\Providers\\PluginServiceProvider",
+    "assets": {"scripts": ["admin.js"]},
+    "permissions": {
+        "stats.view": {
+            "label": "stats::messages.permission_view",
+            "default": {"admin": true}
+        }
+    },
+    "navigation": {
+        "admin": [
+            {
+                "parent": "extensions",
+                "position": 820,
+                "label": "stats::messages.title",
+                "permission": "stats.view",
+                "icon": "bar-chart",
+                "route": "plugins.stats.admin.index"
+            }
+        ]
+    },
+    "requires": {"php": "^8.4.1", "cms": ">=0.0.1"},
+    "configuration": {"route": "plugins.stats.admin.index", "permission": "stats.view"}
+}
