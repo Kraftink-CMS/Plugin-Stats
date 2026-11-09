@@ -13,7 +13,7 @@
     "games": {
         "supported": ["*"]
     },
-    "version": "1.0.0",
+    "version": "1.0.1-dev",
     "namespace": "KraftInk\\Plugins\\Stats\\",
     "provider": "KraftInk\\Plugins\\Stats\\Providers\\PluginServiceProvider",
     "assets": {"scripts": ["admin.js"]},
