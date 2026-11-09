@@ -5,15 +5,20 @@
     "license": "MIT",
     "description": "stats::messages.description",
     "market": {
+        "readme": {
+            "en": "lang/en/market.md",
+            "fr": "lang/fr/market.md"
+        },
+        "icon": "bar-chart-line",
         "name": "stats::messages.title",
         "author": {"name": "nivcoo, KraftInk", "url": "https://github.com/kraftink-cms"},
-        "description": "stats::messages.description"
+        "description": "stats::market.description"
     },
     "type": "plugin",
     "games": {
         "supported": ["*"]
     },
-    "version": "1.0.0",
+    "version": "1.0.1",
     "namespace": "KraftInk\\Plugins\\Stats\\",
     "provider": "KraftInk\\Plugins\\Stats\\Providers\\PluginServiceProvider",
     "assets": {"scripts": ["admin.js"]},
