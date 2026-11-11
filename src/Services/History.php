@@ -30,8 +30,12 @@ class History
 {
     private const int REFERRER_LIMIT = 50;
 
-    public function __construct(private OperationLock $lock, private RetentionPolicy $retention, private Router $router)
-    {
+    public function __construct(
+        private OperationLock $lock,
+        private RetentionPolicy $retention,
+        private Router $router,
+        private ServerTelemetry $telemetry,
+    ) {
     }
 
     public function recordVisit(RequestHandled $event): void
@@ -220,8 +224,10 @@ class History
                         $uptime = $this->nonnegativeInteger($status['uptime_seconds'] ?? null);
                         $tps = $status['tps'][0] ?? null;
                         $tps = is_numeric($tps) && $tps >= 0 && $tps <= 1000 ? (float) $tps : null;
-                        $cpu = $status['cpu_percent'] ?? null;
-                        $cpu = is_numeric($cpu) && $cpu >= 0 && $cpu <= 100 ? round((float) $cpu, 2) : null;
+                        $statusCpu = $status['cpu_percent'] ?? null;
+                        $cpu = $this->telemetry->cpuPercent($server) ?? (
+                            is_numeric($statusCpu) && $statusCpu >= 0 && $statusCpu <= 100 ? round((float) $statusCpu, 2) : null
+                        );
                         $used = $this->nonnegativeInteger($status['memory']['used'] ?? null);
                         $maximum = $this->nonnegativeInteger($status['memory']['max'] ?? null);
                         $memory = $used !== null && $maximum > 0
